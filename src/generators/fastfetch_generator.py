@@ -41,7 +41,7 @@ class FastfetchGenerator(BaseGenerator):
             make_stat("Databases", " ".join(skills.get("databases", [])), "color-blue"),
             make_stat("AI Stack", " ".join(skills.get("ai_stack", [])), "color-blue"),
             make_stat("Core CS", " ".join(skills.get("core_cs", [])), "color-blue"),
-            make_stat("Projects", " | ".join(projects)),
+            make_stat("Projects", " | ".join(p.get("name", "") if isinstance(p, dict) else p for p in projects)),
             make_stat("Achievements", achievements[0] if achievements else "N/A"),
             make_stat("LeetCode", personal.get("leetcode", "N/A")),
             make_stat("Status", personal.get("status", "N/A"), "color-success")

@@ -18,7 +18,24 @@
     "ai_stack": ["LangChain", "HuggingFace", "OpenAI"],
     "core_cs": ["DSA", "OOP", "DBMS", "OS", "CN"]
   },
-  "projects": ["SafeMine", "AI Assignment Evaluator"],
+  "projects": [
+    {
+      "name": "SafeMine",
+      "description": "AI-powered mine safety monitoring system",
+      "technologies": ["Python", "Flask", "OpenCV", "YOLO", "MongoDB"],
+      "github": "github.com/omi290/safemine",
+      "demo": "safemine.vercel.app",
+      "status": "Active Development"
+    },
+    {
+      "name": "AI Assignment Evaluator",
+      "description": "Automated pipeline for evaluating and grading code assignments using LLMs.",
+      "technologies": ["Python", "LangChain", "OpenAI", "React", "Node.js"],
+      "github": "github.com/omi290/ai-evaluator",
+      "demo": "aieval.vercel.app",
+      "status": "Completed"
+    }
+  ],
   "achievements": [
     "Graph-e-thon Runner-up"
   ],
