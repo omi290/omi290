@@ -54,10 +54,10 @@
 <text x="20" y="124" class="r color-primary" style="animation-delay: 0.36s;"><tspan class="color-secondary">Role            </tspan>Software Engineer</text>
 <text x="20" y="148" class="r color-primary" style="animation-delay: 0.44s;"><tspan class="color-secondary">Specialization  </tspan>AI-powered Applications</text>
 <text x="20" y="172" class="r color-blue" style="animation-delay: 0.52s;"><tspan class="color-secondary">Languages       </tspan>C++ Python JavaScript SQL</text>
-<text x="20" y="196" class="r color-blue" style="animation-delay: 0.6000000000000001s;"><tspan class="color-secondary">Frameworks      </tspan>Flask React Node.js</text>
-<text x="20" y="220" class="r color-blue" style="animation-delay: 0.6799999999999999s;"><tspan class="color-secondary">Databases       </tspan>MongoDB MySQL Firebase</text>
-<text x="20" y="244" class="r color-blue" style="animation-delay: 0.76s;"><tspan class="color-secondary">AI Stack        </tspan>LangChain HuggingFace OpenAI</text>
-<text x="20" y="268" class="r color-blue" style="animation-delay: 0.8400000000000001s;"><tspan class="color-secondary">Core CS         </tspan>DSA OOP DBMS OS CN</text>
+<text x="20" y="196" class="r color-blue" style="animation-delay: 0.6000000000000001s;"><tspan class="color-secondary">Frameworks      </tspan>HTML CSS React Tailwind CSS Flask Node.js FastAPI</text>
+<text x="20" y="220" class="r color-blue" style="animation-delay: 0.6799999999999999s;"><tspan class="color-secondary">Databases       </tspan>MongoDB MySQL Oracle Firebase</text>
+<text x="20" y="244" class="r color-blue" style="animation-delay: 0.76s;"><tspan class="color-secondary">AI Stack        </tspan>LangChain OpenAI HuggingFace Scikit-learn Pandas</text>
+<text x="20" y="268" class="r color-blue" style="animation-delay: 0.8400000000000001s;"><tspan class="color-secondary">Core CS         </tspan>Data Structures & Algorithms Object-Oriented Programming Database Management Systems Operating Systems Computer Networks</text>
 <text x="20" y="292" class="r color-primary" style="animation-delay: 0.9199999999999999s;"><tspan class="color-secondary">Projects        </tspan>SafeMine | AI Assignment Evaluator</text>
 <text x="20" y="316" class="r color-primary" style="animation-delay: 1.0s;"><tspan class="color-secondary">Achievements    </tspan>Graph-e-thon Runner-up</text>
 <text x="20" y="340" class="r color-primary" style="animation-delay: 1.08s;"><tspan class="color-secondary">LeetCode        </tspan>250+ Problems</text>

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="820" height="252" viewBox="0 0 820 252">
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="558" viewBox="0 0 820 558">
     <style>
         .terminal-text { font-family: Courier New, monospace; font-size: 14px; fill: #c9d1d9; }
         .terminal-text-bold { font-family: Courier New, monospace; font-size: 14px; font-weight: 700; fill: #c9d1d9; }
@@ -16,7 +16,7 @@
     </style>
     
     <!-- Window Background with Border -->
-    <rect width="819" height="251" x="0.5" y="0.5" class="terminal-bg" rx="8"/>
+    <rect width="819" height="557" x="0.5" y="0.5" class="terminal-bg" rx="8"/>
     
     <!-- Header -->
     <path class="terminal-header" d="M 0.5 8 Q 0.5 0.5 8 0.5 L 811.5 0.5 Q 819.5 0.5 819.5 8 L 819.5 32 L 0.5 32 Z" />
@@ -35,21 +35,40 @@
                 0% { opacity: 0; }
                 100% { opacity: 1; }
             }
-            .cmd, .r {
+            @keyframes blink {
+                0%, 100% { opacity: 1; }
+                50% { opacity: 0; }
+            }
+            .cmd, .r, .stagger {
                 font-family: 'JetBrains Mono', monospace;
                 font-size: 14px;
-                animation: fade 0.3s backwards;
+                animation: fade 0.2s backwards;
+            }
+            .cursor {
+                animation: blink 1s infinite;
             }
         </style>
         <g xml:space="preserve">
-        <text x="20" y="34" class="cmd" style="animation-delay: 0s;"><tspan class="color-success">om@github</tspan><tspan class="color-primary">:</tspan><tspan class="color-blue">~$</tspan><tspan class="color-primary"> cat skills.json</tspan></text>
-<text x="20" y="74" class="r color-primary" style="animation-delay: 0.4s;">{</text>
-<text x="44" y="98" class="r" style="animation-delay: 0.55s;"><tspan class="color-secondary">"Languages":   </tspan><tspan class="color-primary">[ </tspan><tspan class="color-blue">C++, Python, JavaScript, SQL</tspan><tspan class="color-primary"> ]</tspan><tspan class="color-primary">,</tspan></text>
-<text x="44" y="122" class="r" style="animation-delay: 0.7000000000000001s;"><tspan class="color-secondary">"Frameworks":  </tspan><tspan class="color-primary">[ </tspan><tspan class="color-blue">Flask, React, Node.js</tspan><tspan class="color-primary"> ]</tspan><tspan class="color-primary">,</tspan></text>
-<text x="44" y="146" class="r" style="animation-delay: 0.8500000000000001s;"><tspan class="color-secondary">"Databases":   </tspan><tspan class="color-primary">[ </tspan><tspan class="color-blue">MongoDB, MySQL, Firebase</tspan><tspan class="color-primary"> ]</tspan><tspan class="color-primary">,</tspan></text>
-<text x="44" y="170" class="r" style="animation-delay: 1.0s;"><tspan class="color-secondary">"AI Stack":    </tspan><tspan class="color-primary">[ </tspan><tspan class="color-blue">LangChain, HuggingFace, OpenAI</tspan><tspan class="color-primary"> ]</tspan><tspan class="color-primary">,</tspan></text>
-<text x="44" y="194" class="r" style="animation-delay: 1.15s;"><tspan class="color-secondary">"Core CS":     </tspan><tspan class="color-primary">[ </tspan><tspan class="color-blue">DSA, OOP, DBMS, OS, CN</tspan><tspan class="color-primary"> ]</tspan></text>
-<text x="20" y="218" class="r color-primary" style="animation-delay: 1.2999999999999998s;">}</text>
+        <text x="20" y="34" class="cmd" style="animation-delay: 0s;"><tspan class="color-success">om@github</tspan><tspan class="color-primary">:</tspan><tspan class="color-blue">~$</tspan><tspan class="color-primary"> skills --all</tspan></text>
+<text x="20" y="74" class="r color-secondary" style="animation-delay: 0.30s;">Languages</text>
+<text x="20" y="98" class="r" style="animation-delay: 0.34s;"><tspan class="color-primary stagger" style="animation-delay: 0.34s;">C++</tspan><tspan class="color-secondary stagger" style="animation-delay: 0.38s;"> • </tspan><tspan class="color-primary stagger" style="animation-delay: 0.42s;">Python</tspan><tspan class="color-secondary stagger" style="animation-delay: 0.46s;"> • </tspan><tspan class="color-primary stagger" style="animation-delay: 0.50s;">JavaScript</tspan><tspan class="color-secondary stagger" style="animation-delay: 0.53s;"> • </tspan><tspan class="color-primary stagger" style="animation-delay: 0.57s;">SQL</tspan></text>
+<text x="20" y="124" class="r color-secondary" style="animation-delay: 0.61s;">Frontend</text>
+<text x="20" y="148" class="r" style="animation-delay: 0.65s;"><tspan class="color-primary stagger" style="animation-delay: 0.65s;">HTML</tspan><tspan class="color-secondary stagger" style="animation-delay: 0.69s;"> • </tspan><tspan class="color-primary stagger" style="animation-delay: 0.73s;">CSS</tspan><tspan class="color-secondary stagger" style="animation-delay: 0.77s;"> • </tspan><tspan class="color-primary stagger" style="animation-delay: 0.81s;">React</tspan><tspan class="color-secondary stagger" style="animation-delay: 0.85s;"> • </tspan><tspan class="color-primary stagger" style="animation-delay: 0.89s;">Tailwind CSS</tspan></text>
+<text x="20" y="174" class="r color-secondary" style="animation-delay: 0.93s;">Backend</text>
+<text x="20" y="198" class="r" style="animation-delay: 0.97s;"><tspan class="color-primary stagger" style="animation-delay: 0.97s;">Flask</tspan><tspan class="color-secondary stagger" style="animation-delay: 1.00s;"> • </tspan><tspan class="color-primary stagger" style="animation-delay: 1.04s;">Node.js</tspan><tspan class="color-secondary stagger" style="animation-delay: 1.08s;"> • </tspan><tspan class="color-primary stagger" style="animation-delay: 1.12s;">FastAPI</tspan></text>
+<text x="20" y="224" class="r color-secondary" style="animation-delay: 1.16s;">AI / ML</text>
+<text x="20" y="248" class="r" style="animation-delay: 1.20s;"><tspan class="color-blue stagger" style="animation-delay: 1.20s;">LangChain</tspan><tspan class="color-secondary stagger" style="animation-delay: 1.24s;"> • </tspan><tspan class="color-blue stagger" style="animation-delay: 1.28s;">OpenAI</tspan><tspan class="color-secondary stagger" style="animation-delay: 1.32s;"> • </tspan><tspan class="color-blue stagger" style="animation-delay: 1.36s;">HuggingFace</tspan><tspan class="color-secondary stagger" style="animation-delay: 1.40s;"> • </tspan><tspan class="color-blue stagger" style="animation-delay: 1.43s;">Scikit-learn</tspan><tspan class="color-secondary stagger" style="animation-delay: 1.47s;"> • </tspan><tspan class="color-blue stagger" style="animation-delay: 1.51s;">Pandas</tspan></text>
+<text x="20" y="274" class="r color-secondary" style="animation-delay: 1.55s;">Databases</text>
+<text x="20" y="298" class="r" style="animation-delay: 1.59s;"><tspan class="color-primary stagger" style="animation-delay: 1.59s;">MongoDB</tspan><tspan class="color-secondary stagger" style="animation-delay: 1.63s;"> • </tspan><tspan class="color-primary stagger" style="animation-delay: 1.67s;">MySQL</tspan><tspan class="color-secondary stagger" style="animation-delay: 1.71s;"> • </tspan><tspan class="color-primary stagger" style="animation-delay: 1.75s;">Oracle</tspan><tspan class="color-secondary stagger" style="animation-delay: 1.79s;"> • </tspan><tspan class="color-primary stagger" style="animation-delay: 1.83s;">Firebase</tspan></text>
+<text x="20" y="324" class="r color-secondary" style="animation-delay: 1.87s;">Cloud & DevOps</text>
+<text x="20" y="348" class="r" style="animation-delay: 1.90s;"><tspan class="color-success stagger" style="animation-delay: 1.90s;">AWS</tspan><tspan class="color-secondary stagger" style="animation-delay: 1.94s;"> • </tspan><tspan class="color-success stagger" style="animation-delay: 1.98s;">Docker</tspan><tspan class="color-secondary stagger" style="animation-delay: 2.02s;"> • </tspan><tspan class="color-success stagger" style="animation-delay: 2.06s;">Git</tspan><tspan class="color-secondary stagger" style="animation-delay: 2.10s;"> • </tspan><tspan class="color-success stagger" style="animation-delay: 2.14s;">GitHub</tspan><tspan class="color-secondary stagger" style="animation-delay: 2.18s;"> • </tspan><tspan class="color-success stagger" style="animation-delay: 2.22s;">GCP</tspan></text>
+<text x="20" y="374" class="r color-secondary" style="animation-delay: 2.26s;">Developer Tools</text>
+<text x="20" y="398" class="r" style="animation-delay: 2.30s;"><tspan class="color-primary stagger" style="animation-delay: 2.30s;">VS Code</tspan><tspan class="color-secondary stagger" style="animation-delay: 2.33s;"> • </tspan><tspan class="color-primary stagger" style="animation-delay: 2.37s;">Postman</tspan><tspan class="color-secondary stagger" style="animation-delay: 2.41s;"> • </tspan><tspan class="color-primary stagger" style="animation-delay: 2.45s;">Linux</tspan><tspan class="color-secondary stagger" style="animation-delay: 2.49s;"> • </tspan><tspan class="color-primary stagger" style="animation-delay: 2.53s;">GitHub Actions</tspan></text>
+<text x="20" y="424" class="r color-secondary" style="animation-delay: 2.57s;">Core CS</text>
+<text x="20" y="448" class="r" style="animation-delay: 2.61s;"><tspan class="color-primary stagger" style="animation-delay: 2.61s;">Data Structures & Algorithms</tspan><tspan class="color-secondary stagger" style="animation-delay: 2.65s;"> • </tspan><tspan class="color-primary stagger" style="animation-delay: 2.69s;">Object-Oriented Programming</tspan><tspan class="color-secondary stagger" style="animation-delay: 2.73s;"> • </tspan><tspan class="color-primary stagger" style="animation-delay: 2.77s;">Database Management Systems</tspan><tspan class="color-secondary stagger" style="animation-delay: 2.80s;"> • </tspan><tspan class="color-primary stagger" style="animation-delay: 2.84s;">Operating Systems</tspan><tspan class="color-secondary stagger" style="animation-delay: 2.88s;"> • </tspan><tspan class="color-primary stagger" style="animation-delay: 2.92s;">Computer Networks</tspan></text>
+<text x="20" y="474" class="r color-secondary" style="animation-delay: 2.96s;">Embedded / IoT</text>
+<text x="20" y="498" class="r" style="animation-delay: 3.00s;"><tspan class="color-primary stagger" style="animation-delay: 3.00s;">ESP32</tspan><tspan class="color-secondary stagger" style="animation-delay: 3.04s;"> • </tspan><tspan class="color-primary stagger" style="animation-delay: 3.08s;">LoRa</tspan><tspan class="color-secondary stagger" style="animation-delay: 3.12s;"> • </tspan><tspan class="color-primary stagger" style="animation-delay: 3.16s;">MQTT</tspan></text>
+<text x="20" y="524" class="r cursor" style="animation-delay: 3.30s;"><tspan class="color-success">om@github</tspan><tspan class="color-primary">:</tspan><tspan class="color-blue">~$</tspan> <tspan class="color-primary">█</tspan></text>
 </g>
     </g>
 </svg>

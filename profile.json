@@ -13,10 +13,14 @@
   },
   "skills": {
     "languages": ["C++", "Python", "JavaScript", "SQL"],
-    "frameworks": ["Flask", "React", "Node.js"],
-    "databases": ["MongoDB", "MySQL", "Firebase"],
-    "ai_stack": ["LangChain", "HuggingFace", "OpenAI"],
-    "core_cs": ["DSA", "OOP", "DBMS", "OS", "CN"]
+    "frontend": ["HTML", "CSS", "React", "Tailwind CSS"],
+    "backend": ["Flask", "Node.js", "FastAPI"],
+    "ai_ml": ["LangChain", "OpenAI", "HuggingFace", "Scikit-learn", "Pandas"],
+    "databases": ["MongoDB", "MySQL", "Oracle", "Firebase"],
+    "cloud_devops": ["AWS", "Docker", "Git", "GitHub", "GCP"],
+    "developer_tools": ["VS Code", "Postman", "Linux", "GitHub Actions"],
+    "core_cs": ["Data Structures & Algorithms", "Object-Oriented Programming", "Database Management Systems", "Operating Systems", "Computer Networks"],
+    "embedded_iot": ["ESP32", "LoRa", "MQTT"]
   },
   "projects": [
     {
