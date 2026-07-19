@@ -42,6 +42,12 @@ class PortraitGenerator(BaseGenerator):
             enhancer = ImageEnhance.Contrast(gray_img)
             gray_img = enhancer.enhance(1.5)
             
+            # 1. Detect foreground bounding box
+            bbox = alpha.getbbox()
+            if bbox:
+                gray_img = gray_img.crop(bbox)
+                alpha = alpha.crop(bbox)
+            
             # 4. Resize
             # Target width/height bounds
             max_width_px = config.PORTRAIT_WIDTH - (config.PADDING * 2)
@@ -53,41 +59,51 @@ class PortraitGenerator(BaseGenerator):
             max_cols = int(max_width_px / char_width)
             max_rows = int(max_height_px / char_height)
             
-            orig_width, orig_height = img.size
+            # Target size: 80% of available space
+            target_cols = int(max_cols * 0.8)
+            target_rows = int(max_rows * 0.8)
+            
+            orig_width, orig_height = gray_img.size
             aspect_ratio = (orig_height / char_height) / (orig_width / char_width)
             
-            if orig_width > orig_height:
-                new_width = max_cols
-                new_height = int(max_cols * aspect_ratio)
+            if (orig_width / char_width) > (orig_height / char_height):
+                new_width = target_cols
+                new_height = int(target_cols * aspect_ratio)
             else:
-                new_height = max_rows
-                new_width = int(max_rows / aspect_ratio)
+                new_height = target_rows
+                new_width = int(target_rows / aspect_ratio)
                 
-            new_width = min(new_width, max_cols)
-            new_height = min(new_height, max_rows)
+            new_width = min(max(new_width, 1), target_cols)
+            new_height = min(max(new_height, 1), target_rows)
             
             gray_img = gray_img.resize((new_width, new_height), Image.Resampling.LANCZOS)
             alpha = alpha.resize((new_width, new_height), Image.Resampling.LANCZOS)
             
-            # 5. Convert to ASCII
+            # Calculate offsets to center the image
+            offset_x = (max_cols - new_width) // 2
+            offset_y = (max_rows - new_height) // 2
+            
+            # 5. Convert to ASCII centered grid
             self.ascii_art = []
             chars = config.ASCII_CHARS
             num_chars = len(chars)
             
-            for y in range(new_height):
+            for r in range(max_rows):
                 row = ""
-                for x in range(new_width):
-                    a_val = alpha.getpixel((x, y))
-                    if a_val < 128:
-                        row += " " # Transparent
+                for c in range(max_cols):
+                    img_x = c - offset_x
+                    img_y = r - offset_y
+                    
+                    if 0 <= img_x < new_width and 0 <= img_y < new_height:
+                        a_val = alpha.getpixel((img_x, img_y))
+                        if a_val < 128:
+                            row += " " # Transparent
+                        else:
+                            g_val = gray_img.getpixel((img_x, img_y))
+                            idx = int((g_val / 255.0) * (num_chars - 1))
+                            row += chars[idx]
                     else:
-                        g_val = gray_img.getpixel((x, y))
-                        # Invert so darker pixels map to denser characters, or vice versa?
-                        # Terminal has dark background, so light pixels should be dense (white text).
-                        # g_val=255 (white) -> index num_chars-1 ('@')
-                        # g_val=0 (black) -> index 0 (' ')
-                        idx = int((g_val / 255.0) * (num_chars - 1))
-                        row += chars[idx]
+                        row += " " # Empty padding
                 self.ascii_art.append(row)
                 
         except Exception as e:
@@ -141,7 +157,7 @@ class PortraitGenerator(BaseGenerator):
             # Add a slight delay to start
             animation_style = f"animation-delay: {delay + config.FADE_IN_DELAY}s;"
             
-            content += f'<text x="{padding}" y="{current_y}" class="ascii-row" style="{animation_style} fill: {theme_fg};">'
+            content += f'<text x="{padding}" y="{current_y}" class="ascii-row" style="{animation_style} fill: {theme_fg};" xml:space="preserve">'
             content += row
             content += '</text>\n'
             current_y += config.ASCII_LINE_HEIGHT
