@@ -46,8 +46,8 @@ class FastfetchGenerator(BaseGenerator):
             ("User", personal.get("user", ""), "color-primary"),
             ("Role", personal.get("role", ""), "color-primary"),
             ("Specialization", personal.get("specialization", ""), "color-primary"),
-            ("Education", education.get("stream", education.get("degree", "")), "color-secondary"),
-            ("College", education.get("college", ""), "color-secondary"),
+            ("Education", education.get("stream", education.get("degree", "")), "color-primary"),
+            ("College", education.get("college", ""), "color-primary"),
             ("Languages", join_list(skills.get("languages")), "color-blue"),
             ("AI Stack", join_list(skills.get("ai_stack")), "color-blue"),
             (
