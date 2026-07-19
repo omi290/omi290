@@ -28,6 +28,48 @@
     
     <!-- Inner Content -->
     <g transform="translate(0, 32)">
-        <text x="10" y="20" class="terminal-text">Portrait Placeholder</text>
+        
+        <style>
+            @keyframes typing {
+                from { clip-path: inset(0 100% 0 0); }
+                to { clip-path: inset(0 0 0 0); }
+            }
+            @keyframes blink {
+                0%, 100% { opacity: 1; }
+                50% { opacity: 0; }
+            }
+            .ascii-row {
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 12px;
+                white-space: pre;
+                clip-path: inset(0 100% 0 0);
+                animation: typing 0.5s steps(40, end) forwards;
+            }
+            .cursor {
+                animation: blink 1s infinite;
+            }
+        </style>
+        <text x="20" y="52" class="ascii-row" style="animation-delay: 0.5s; fill: #c9d1d9;">     === =======++****+++++++*++ </text>
+<text x="20" y="64" class="ascii-row" style="animation-delay: 0.6s; fill: #c9d1d9;">            ===++++**+++==+++**+=</text>
+<text x="20" y="76" class="ascii-row" style="animation-delay: 0.7s; fill: #c9d1d9;">    =======+*+++++++++++++++++#*=</text>
+<text x="20" y="88" class="ascii-row" style="animation-delay: 0.8s; fill: #c9d1d9;">   +++++++**++==========  ===+*#+</text>
+<text x="20" y="100" class="ascii-row" style="animation-delay: 0.9s; fill: #c9d1d9;">   +*******+++========     ===*#+</text>
+<text x="20" y="112" class="ascii-row" style="animation-delay: 1.0s; fill: #c9d1d9;">   *###***+++========      ++*##+</text>
+<text x="20" y="124" class="ascii-row" style="animation-delay: 1.1s; fill: #c9d1d9;">  =*###**+==========       *####+</text>
+<text x="20" y="136" class="ascii-row" style="animation-delay: 1.2000000000000002s; fill: #c9d1d9;"> ==**#*+=     =+===        *#@#*=</text>
+<text x="20" y="148" class="ascii-row" style="animation-delay: 1.3s; fill: #c9d1d9;"> ==***+==     =++===       ####*=</text>
+<text x="20" y="160" class="ascii-row" style="animation-delay: 1.4s; fill: #c9d1d9;">  =***+=      ++++===      *#@#*=</text>
+<text x="20" y="172" class="ascii-row" style="animation-delay: 1.5s; fill: #c9d1d9;">  +***+=     =+++====      *##*+ </text>
+<text x="20" y="184" class="ascii-row" style="animation-delay: 1.6s; fill: #c9d1d9;">  =**+=      =++=          =+++= </text>
+<text x="20" y="196" class="ascii-row" style="animation-delay: 1.7000000000000002s; fill: #c9d1d9;">  =*+=       =+==          = =+= </text>
+<text x="20" y="208" class="ascii-row" style="animation-delay: 1.8s; fill: #c9d1d9;">  =++=       =+=       =      =  </text>
+<text x="20" y="220" class="ascii-row" style="animation-delay: 1.9000000000000001s; fill: #c9d1d9;">   ++=       ==                  </text>
+<text x="20" y="232" class="ascii-row" style="animation-delay: 2.0s; fill: #c9d1d9;">   ++=                  =        </text>
+<text x="20" y="244" class="ascii-row" style="animation-delay: 2.1s; fill: #c9d1d9;">   ===                ====       </text>
+<text x="20" y="256" class="ascii-row" style="animation-delay: 2.2s; fill: #c9d1d9;">   =++=             =======      </text>
+<text x="20" y="268" class="ascii-row" style="animation-delay: 2.3s; fill: #c9d1d9;">   ++===     =================   </text>
+<text x="20" y="280" class="ascii-row" style="animation-delay: 2.4000000000000004s; fill: #c9d1d9;">                                 </text>
+<text x="20" y="292" class="ascii-row cursor" style="animation-delay: 3.0s; fill: #c9d1d9;">█</text>
+
     </g>
 </svg>

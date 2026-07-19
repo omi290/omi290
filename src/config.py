@@ -23,6 +23,11 @@ PORTRAIT_HEIGHT = 300
 PADDING = 20
 MARGIN = 15
 
+# ASCII Generator Settings
+ASCII_CHARS = " .:-=+*#@"
+ASCII_FONT_SIZE = 12
+ASCII_LINE_HEIGHT = 12
+
 # Placeholder Data
 GITHUB_USERNAME_PLACEHOLDER = "your-github-username"
 
