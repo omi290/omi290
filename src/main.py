@@ -36,7 +36,7 @@ def main():
     # This is a basic implementation of the new folder structure
     generator_folders = {
         "portrait": "ascii",
-        "fastfetch": "ascii",
+        "fastfetch": "cards",
         "heatmap": "heatmap",
         "skills": "skills",
         "projects": "projects"

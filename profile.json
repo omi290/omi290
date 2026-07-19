@@ -1,9 +1,25 @@
 {
-  "personal": {},
-  "education": {},
-  "skills": {},
+  "personal": {
+    "name": "Om",
+    "role": "Senior AI Software Engineer",
+    "status": "Coding"
+  },
+  "education": {
+    "degree": "BSc Computer Science",
+    "college": "Tech University"
+  },
+  "skills": {
+    "languages": ["Python", "Go", "TypeScript"],
+    "frameworks": ["React", "FastAPI"],
+    "databases": ["PostgreSQL", "Redis"],
+    "ai_stack": ["PyTorch", "LangChain"],
+    "core_cs": ["Distributed Systems", "Algorithms"]
+  },
   "projects": [],
-  "achievements": [],
+  "achievements": [
+    "Open Source Contributor",
+    "100x Developer"
+  ],
   "social": {},
   "contact": {}
 }
