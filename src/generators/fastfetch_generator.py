@@ -103,4 +103,4 @@ class FastfetchGenerator(BaseGenerator):
             content += '</text>\n'
             current_y += 21
             
-        return create_svg(config.PORTRAIT_WIDTH, config.PORTRAIT_HEIGHT, content)
+        return create_svg(config.FASTFETCH_WIDTH, config.FASTFETCH_HEIGHT, content)

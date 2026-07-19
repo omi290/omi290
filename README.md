@@ -5,14 +5,7 @@
 <br />
 
 <div align="center">
-  <img src="assets/generated/heatmap/heatmap.svg" alt="Contribution Heatmap" />
-</div>
-
-<br />
-
-<div align="center">
-  <img src="assets/generated/ascii/portrait.svg" alt="ASCII Portrait" width="400" />
-  <img src="assets/generated/cards/fastfetch.svg" alt="Fastfetch Card" width="400" />
+  <img src="assets/generated/cards/fastfetch.svg" alt="Fastfetch Card" />
 </div>
 
 <br />
@@ -25,6 +18,12 @@
 
 <div align="center">
   <img src="assets/generated/skills/skills.svg" alt="cat skills.json" />
+</div>
+
+<br />
+
+<div align="center">
+  <img src="assets/generated/heatmap/heatmap.svg" alt="Contribution Heatmap" />
 </div>
 
 <br />

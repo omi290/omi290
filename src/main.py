@@ -2,7 +2,6 @@ import os
 import json
 import logging
 from config import load_config
-from generators.portrait import PortraitGenerator
 from generators.fastfetch_generator import FastfetchGenerator
 from generators.heatmap import HeatmapGenerator
 from generators.skills import SkillsGenerator
@@ -22,7 +21,6 @@ def main():
     
     # 3. Initialize generators
     generators = [
-        PortraitGenerator(config),
         FastfetchGenerator(config),
         HeatmapGenerator(config),
         SkillsGenerator(config),
@@ -35,7 +33,6 @@ def main():
     # Mapping generator filename to their subfolder category
     # This is a basic implementation of the new folder structure
     generator_folders = {
-        "portrait": "ascii",
         "fastfetch": "cards",
         "heatmap": "heatmap",
         "skills": "skills",
