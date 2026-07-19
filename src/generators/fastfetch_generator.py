@@ -40,23 +40,20 @@ class FastfetchGenerator(BaseGenerator):
                 return str(v[0])
             return fallback
 
-        # Required Display (remove Host/Status completely)
+        # Required Display (remove duplicated rows from skills/other sections)
         stats = [
             ("OS", personal.get("os", ""), "color-primary"),
             ("User", personal.get("user", ""), "color-primary"),
             ("Role", personal.get("role", ""), "color-primary"),
-            ("Specialization", personal.get("specialization", ""), "color-primary"),
-            ("Education", education.get("stream", education.get("degree", "")), "color-primary"),
-            ("College", education.get("college", ""), "color-primary"),
-            ("Languages", join_list(skills.get("languages")), "color-blue"),
-            ("AI Stack", join_list(skills.get("ai_stack")), "color-blue"),
             (
-                "Core Coursework",
-                join_list(skills.get("core_cs") or skills.get("coursework")),
-                "color-blue",
+                "Education",
+                education.get("stream", education.get("degree", "")),
+                "color-primary",
             ),
+            ("College", education.get("college", ""), "color-primary"),
             ("Achievements", first_or(achievements, "N/A"), "color-success"),
         ]
+
 
         stats = [s for s in stats if str(s[1]).strip() != ""]
         if not stats:
