@@ -33,4 +33,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: update generated SVGs"
-          file_pattern: "assets/generated/*.svg"
+          file_pattern: "assets/generated/**/*.svg"

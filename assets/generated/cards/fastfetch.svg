@@ -31,40 +31,38 @@
     <g transform="translate(0, 32)">
         
         <style>
-            @keyframes typing {
+            @keyframes t {
                 from { clip-path: inset(0 100% 0 0); }
                 to { clip-path: inset(0 0 0 0); }
             }
-            @keyframes blink {
+            @keyframes b {
                 0%, 100% { opacity: 1; }
                 50% { opacity: 0; }
             }
-            .ff-row {
+            .r {
                 font-family: 'JetBrains Mono', monospace;
                 font-size: 14px;
-                white-space: pre;
                 clip-path: inset(0 100% 0 0);
-                animation: typing 0.4s steps(50, end) forwards;
+                animation: t 0.15s linear forwards;
             }
-            .cursor {
-                animation: blink 1s infinite;
-            }
+            .c { animation: b 1s infinite; }
         </style>
-        <text x="20" y="34" class="ff-row" style="animation-delay: 0s;"><tspan class="color-success">om@github</tspan><tspan class="color-primary">:</tspan><tspan class="color-blue">~$</tspan><tspan class="color-primary"> fastfetch</tspan></text>
-<text x="20" y="76" class="ff-row" style="animation-delay: 0.5s;" xml:space="preserve"><tspan class="color-success">OS              </tspan><tspan class="color-primary">GitHub</tspan></text>
-<text x="20" y="100" class="ff-row" style="animation-delay: 0.6s;" xml:space="preserve"><tspan class="color-success">Host            </tspan><tspan class="color-primary">Graphic Era Hill University</tspan></text>
-<text x="20" y="124" class="ff-row" style="animation-delay: 0.7s;" xml:space="preserve"><tspan class="color-success">Role            </tspan><tspan class="color-primary">Software Engineer</tspan></text>
-<text x="20" y="148" class="ff-row" style="animation-delay: 0.8s;" xml:space="preserve"><tspan class="color-success">Specialization  </tspan><tspan class="color-primary">AI-powered Applications</tspan></text>
-<text x="20" y="172" class="ff-row" style="animation-delay: 0.9s;" xml:space="preserve"><tspan class="color-success">Languages       </tspan><tspan class="color-primary">C++ Python JavaScript SQL</tspan></text>
-<text x="20" y="196" class="ff-row" style="animation-delay: 1.0s;" xml:space="preserve"><tspan class="color-success">Frameworks      </tspan><tspan class="color-primary">Flask React Node.js</tspan></text>
-<text x="20" y="220" class="ff-row" style="animation-delay: 1.1s;" xml:space="preserve"><tspan class="color-success">Databases       </tspan><tspan class="color-primary">MongoDB MySQL Firebase</tspan></text>
-<text x="20" y="244" class="ff-row" style="animation-delay: 1.2000000000000002s;" xml:space="preserve"><tspan class="color-success">AI Stack        </tspan><tspan class="color-primary">LangChain HuggingFace OpenAI</tspan></text>
-<text x="20" y="268" class="ff-row" style="animation-delay: 1.3s;" xml:space="preserve"><tspan class="color-success">Core CS         </tspan><tspan class="color-primary">DSA OOP DBMS OS CN</tspan></text>
-<text x="20" y="292" class="ff-row" style="animation-delay: 1.4s;" xml:space="preserve"><tspan class="color-success">Projects        </tspan><tspan class="color-primary">SafeMine | AI Assignment Evaluator</tspan></text>
-<text x="20" y="316" class="ff-row" style="animation-delay: 1.5s;" xml:space="preserve"><tspan class="color-success">Achievements    </tspan><tspan class="color-primary">Graph-e-thon Runner-up</tspan></text>
-<text x="20" y="340" class="ff-row" style="animation-delay: 1.6s;" xml:space="preserve"><tspan class="color-success">LeetCode        </tspan><tspan class="color-primary">250+ Problems</tspan></text>
-<text x="20" y="364" class="ff-row" style="animation-delay: 1.7000000000000002s;" xml:space="preserve"><tspan class="color-success">Status          </tspan><tspan class="color-primary">Building useful software.</tspan></text>
-<text x="20" y="400" class="ff-row cursor" style="animation-delay: 2.2s;" xml:space="preserve"><tspan class="color-success">om@github</tspan><tspan class="color-primary">:</tspan><tspan class="color-blue">~$</tspan> <tspan class="color-primary">█</tspan></text>
-
+        <g xml:space="preserve">
+        <text x="20" y="34" class="r" style="animation-delay: 0s;"><tspan class="color-success">om@github</tspan><tspan class="color-primary">:</tspan><tspan class="color-blue">~$</tspan><tspan class="color-primary"> fastfetch</tspan></text>
+<text x="20" y="76" class="r color-primary" style="animation-delay: 0.2s;"><tspan class="color-secondary">OS              </tspan>GitHub</text>
+<text x="20" y="100" class="r color-primary" style="animation-delay: 0.28s;"><tspan class="color-secondary">Host            </tspan>Graphic Era Hill University</text>
+<text x="20" y="124" class="r color-primary" style="animation-delay: 0.36s;"><tspan class="color-secondary">Role            </tspan>Software Engineer</text>
+<text x="20" y="148" class="r color-primary" style="animation-delay: 0.44s;"><tspan class="color-secondary">Specialization  </tspan>AI-powered Applications</text>
+<text x="20" y="172" class="r color-blue" style="animation-delay: 0.52s;"><tspan class="color-secondary">Languages       </tspan>C++ Python JavaScript SQL</text>
+<text x="20" y="196" class="r color-blue" style="animation-delay: 0.6000000000000001s;"><tspan class="color-secondary">Frameworks      </tspan>Flask React Node.js</text>
+<text x="20" y="220" class="r color-blue" style="animation-delay: 0.6799999999999999s;"><tspan class="color-secondary">Databases       </tspan>MongoDB MySQL Firebase</text>
+<text x="20" y="244" class="r color-blue" style="animation-delay: 0.76s;"><tspan class="color-secondary">AI Stack        </tspan>LangChain HuggingFace OpenAI</text>
+<text x="20" y="268" class="r color-blue" style="animation-delay: 0.8400000000000001s;"><tspan class="color-secondary">Core CS         </tspan>DSA OOP DBMS OS CN</text>
+<text x="20" y="292" class="r color-primary" style="animation-delay: 0.9199999999999999s;"><tspan class="color-secondary">Projects        </tspan>SafeMine | AI Assignment Evaluator</text>
+<text x="20" y="316" class="r color-primary" style="animation-delay: 1.0s;"><tspan class="color-secondary">Achievements    </tspan>Graph-e-thon Runner-up</text>
+<text x="20" y="340" class="r color-primary" style="animation-delay: 1.08s;"><tspan class="color-secondary">LeetCode        </tspan>250+ Problems</text>
+<text x="20" y="364" class="r color-success" style="animation-delay: 1.16s;"><tspan class="color-secondary">Status          </tspan>Building useful software.</text>
+<text x="20" y="400" class="r c" style="animation-delay: 1.39s;"><tspan class="color-success">om@github</tspan><tspan class="color-primary">:</tspan><tspan class="color-blue">~$</tspan> <tspan class="color-primary">█</tspan></text>
+</g>
     </g>
 </svg>
