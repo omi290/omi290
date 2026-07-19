@@ -30,17 +30,10 @@ class SkillsGenerator(BaseGenerator):
                 0% { opacity: 0; }
                 100% { opacity: 1; }
             }
-            @keyframes blink {
-                0%, 100% { opacity: 1; }
-                50% { opacity: 0; }
-            }
-            .cmd, .r, .stagger {
+            .cmd, .r {
                 font-family: 'JetBrains Mono', monospace;
                 font-size: 14px;
-                animation: fade 0.2s backwards;
-            }
-            .cursor {
-                animation: blink 1s infinite;
+                animation: fade 0.3s backwards;
             }
         </style>
         <g xml:space="preserve">
@@ -49,59 +42,55 @@ class SkillsGenerator(BaseGenerator):
         prompt_y = padding + 14
         # Terminal command
         content += f'<text x="{padding}" y="{prompt_y}" class="cmd" style="animation-delay: 0s;">'
-        content += '<tspan class="color-success">om@github</tspan><tspan class="color-primary">:</tspan><tspan class="color-blue">~$</tspan><tspan class="color-primary"> skills --all</tspan>'
+        content += '<tspan class="color-success">om@github</tspan><tspan class="color-primary">:</tspan><tspan class="color-blue">~$</tspan><tspan class="color-primary"> cat skills.json</tspan>'
         content += '</text>\n'
         
         current_y = prompt_y + 40
-        delay = 0.3
+        delay = 0.4
+        stagger = 0.15
         
-        # Define categories to display in order, with display names and specific accent colors
+        # Opening bracket
+        content += f'<text x="{padding}" y="{current_y}" class="r color-primary" style="animation-delay: {delay}s;">{{</text>\n'
+        current_y += 24
+        delay += stagger
+        
+        # Prepare skills for structured mapping
         skill_groups = [
-            ("Languages", skills.get("languages", []), "color-primary"),
-            ("Frontend", skills.get("frontend", []), "color-primary"),
-            ("Backend", skills.get("backend", []), "color-primary"),
-            ("AI / ML", skills.get("ai_ml", []), "color-blue"),
-            ("Databases", skills.get("databases", []), "color-primary"),
-            ("Cloud & DevOps", skills.get("cloud_devops", []), "color-success"),
-            ("Developer Tools", skills.get("developer_tools", []), "color-primary"),
-            ("Core CS", skills.get("core_cs", []), "color-primary"),
-            ("Embedded / IoT", skills.get("embedded_iot", []), "color-primary")
+            ("Languages", skills.get("languages", [])),
+            ("Frameworks", skills.get("frameworks", [])),
+            ("Databases", skills.get("databases", [])),
+            ("AI Stack", skills.get("ai_stack", [])),
+            ("Core CS", skills.get("core_cs", []))
         ]
         
-        # Filter empty groups
-        skill_groups = [(k, v, c) for k, v, c in skill_groups if v]
+        # Filter empty
+        skill_groups = [(k, v) for k, v in skill_groups if v]
         
-        # Total stagger time needs to fit under 2.5s.
-        # Command (0.3) + total groups * stagger + total skills * skill_stagger
-        total_items = sum(len(v) + 1 for _, v, _ in skill_groups) # +1 for category header
-        stagger = 1.8 / total_items if total_items > 0 else 0.1
+        # Determine label width for proper alignment
+        max_len = max([len(k) for k, v in skill_groups]) if skill_groups else 10
+        label_width = max_len + 5 # "Key": + padding
         
-        for k, v, color_class in skill_groups:
-            # Render Category Header
-            content += f'<text x="{padding}" y="{current_y}" class="r color-secondary" style="animation-delay: {delay:.2f}s;">{k}</text>\n'
+        for i, (key, values) in enumerate(skill_groups):
+            key_str = f'"{key}":'
+            val_str = ", ".join(values)
+            
+            content += f'<text x="{padding + 24}" y="{current_y}" class="r" style="animation-delay: {delay}s;">'
+            content += f'<tspan class="color-secondary">{key_str.ljust(label_width)}</tspan>'
+            content += f'<tspan class="color-primary">[ </tspan>'
+            content += f'<tspan class="color-blue">{val_str}</tspan>'
+            content += f'<tspan class="color-primary"> ]</tspan>'
+            
+            # Add comma if not the last item
+            if i < len(skill_groups) - 1:
+                content += '<tspan class="color-primary">,</tspan>'
+                
+            content += '</text>\n'
+            
             current_y += 24
             delay += stagger
             
-            # Render Skills on one line, but stagger them individually
-            content += f'<text x="{padding}" y="{current_y}" class="r" style="animation-delay: {delay:.2f}s;">'
-            
-            for i, skill in enumerate(v):
-                # Skill
-                content += f'<tspan class="{color_class} stagger" style="animation-delay: {delay:.2f}s;">{skill}</tspan>'
-                delay += stagger
-                # Separator
-                if i < len(v) - 1:
-                    content += f'<tspan class="color-secondary stagger" style="animation-delay: {delay:.2f}s;"> • </tspan>'
-                    delay += stagger
-            
-            content += '</text>\n'
-            current_y += 26
-            
-        # Blinking cursor
-        cursor_delay = delay + 0.1
-        content += f'<text x="{padding}" y="{current_y}" class="r cursor" style="animation-delay: {cursor_delay:.2f}s;">'
-        content += '<tspan class="color-success">om@github</tspan><tspan class="color-primary">:</tspan><tspan class="color-blue">~$</tspan> <tspan class="color-primary">█</tspan>'
-        content += '</text>\n'
+        # Closing bracket
+        content += f'<text x="{padding}" y="{current_y}" class="r color-primary" style="animation-delay: {delay}s;">}}</text>\n'
         
         content += '</g>'
         card_height = current_y + padding + 14
