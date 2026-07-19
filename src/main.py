@@ -3,7 +3,7 @@ import json
 import logging
 from config import load_config
 from generators.fastfetch_generator import FastfetchGenerator
-from generators.heatmap import HeatmapGenerator
+
 from generators.skills import SkillsGenerator
 from generators.projects import ProjectsGenerator
 
@@ -22,7 +22,7 @@ def main():
     # 3. Initialize generators
     generators = [
         FastfetchGenerator(config),
-        HeatmapGenerator(config),
+
         SkillsGenerator(config),
         ProjectsGenerator(config)
     ]
@@ -34,7 +34,7 @@ def main():
     # This is a basic implementation of the new folder structure
     generator_folders = {
         "fastfetch": "cards",
-        "heatmap": "heatmap",
+
         "skills": "skills",
         "projects": "projects"
     }

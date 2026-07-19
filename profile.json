@@ -75,8 +75,21 @@
 
   "projects": [
     {
+      "name": "ResumeMatch",
+      "description": "AI-powered resume optimization and ATS matching platform with recruiter dashboard.",
+      "technologies": [
+        "Python",
+        "Flask",
+        "MongoDB",
+        "LangChain",
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ]
+    },
+    {
       "name": "SafeMine",
-      "description": "AI-powered mine safety monitoring system",
+      "description": "AI-powered mine safety monitoring system.",
       "technologies": [
         "Python",
         "Flask",
@@ -95,6 +108,17 @@
         "React",
         "Node.js"
       ]
+    },
+    {
+      "name": "Movie Recommendation System",
+      "description": "Content-based movie recommendation engine using machine learning and similarity search.",
+      "technologies": [
+        "Python",
+        "Pandas",
+        "NumPy",
+        "Scikit-learn",
+        "Streamlit"
+      ]
     }
   ],
 
@@ -103,3 +127,4 @@
     "250+ LeetCode Problems"
   ]
 }
+

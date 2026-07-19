@@ -16,6 +16,4 @@
 
 <br />
 
-<div align="center">
-  <img src="assets/generated/heatmap/heatmap.svg" alt="Heatmap" />
-</div>
+
