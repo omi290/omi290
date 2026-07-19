@@ -1,24 +1,26 @@
 {
   "personal": {
-    "name": "Om",
-    "role": "Senior AI Software Engineer",
-    "status": "Coding"
+    "os": "GitHub",
+    "host": "Graphic Era Hill University",
+    "role": "Software Engineer",
+    "specialization": "AI-powered Applications",
+    "status": "Building useful software.",
+    "leetcode": "250+ Problems"
   },
   "education": {
     "degree": "BSc Computer Science",
-    "college": "Tech University"
+    "college": "Graphic Era Hill University"
   },
   "skills": {
-    "languages": ["Python", "Go", "TypeScript"],
-    "frameworks": ["React", "FastAPI"],
-    "databases": ["PostgreSQL", "Redis"],
-    "ai_stack": ["PyTorch", "LangChain"],
-    "core_cs": ["Distributed Systems", "Algorithms"]
+    "languages": ["C++", "Python", "JavaScript", "SQL"],
+    "frameworks": ["Flask", "React", "Node.js"],
+    "databases": ["MongoDB", "MySQL", "Firebase"],
+    "ai_stack": ["LangChain", "HuggingFace", "OpenAI"],
+    "core_cs": ["DSA", "OOP", "DBMS", "OS", "CN"]
   },
-  "projects": [],
+  "projects": ["SafeMine", "AI Assignment Evaluator"],
   "achievements": [
-    "Open Source Contributor",
-    "100x Developer"
+    "Graph-e-thon Runner-up"
   ],
   "social": {},
   "contact": {}

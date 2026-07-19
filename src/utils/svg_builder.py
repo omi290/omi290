@@ -22,6 +22,7 @@ def create_svg(width: int, height: int, content: str) -> str:
         .color-warning {{ fill: #d29922; }}
         .color-secondary {{ fill: #8b949e; }}
         .color-purple {{ fill: #bc8cff; }}
+        .color-blue {{ fill: #58a6ff; }}
     </style>
     
     <!-- Window Background with Border -->
