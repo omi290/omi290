@@ -51,8 +51,8 @@ class FastfetchGenerator(BaseGenerator):
         content = '''
         <style>
             @keyframes t {
-                from { clip-path: inset(0 100% 0 0); }
-                to { clip-path: inset(0 0 0 0); }
+                from { opacity: 0; }
+                to { opacity: 1; }
             }
             @keyframes b {
                 0%, 100% { opacity: 1; }
@@ -61,7 +61,7 @@ class FastfetchGenerator(BaseGenerator):
             .r {
                 font-family: 'JetBrains Mono', monospace;
                 font-size: 14px;
-                clip-path: inset(0 100% 0 0);
+                opacity: 1;
                 animation: t 0.15s linear forwards;
             }
             .c { animation: b 1s infinite; }
