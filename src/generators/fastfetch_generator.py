@@ -3,7 +3,6 @@ import json
 from .base_generator import BaseGenerator
 from utils.svg_builder import create_svg
 import config
-from utils.theme import ACTIVE_THEME
 
 class FastfetchGenerator(BaseGenerator):
     @property
@@ -28,97 +27,75 @@ class FastfetchGenerator(BaseGenerator):
         projects = self.profile.get("projects", [])
         achievements = self.profile.get("achievements", [])
         
-        # Mapping to required fields
-        os_val = personal.get("os", "GitHub")
-        host_val = personal.get("host", "N/A")
-        role_val = personal.get("role", "N/A")
-        spec_val = personal.get("specialization", "N/A")
-        
-        langs_val = " ".join(skills.get("languages", []))
-        frames_val = " ".join(skills.get("frameworks", []))
-        db_val = " ".join(skills.get("databases", []))
-        ai_val = " ".join(skills.get("ai_stack", []))
-        cs_val = " ".join(skills.get("core_cs", []))
-        
-        proj_val = " | ".join(projects)
-        achieve_val = achievements[0] if achievements else "N/A"
-        leetcode_val = personal.get("leetcode", "N/A")
-        status_val = personal.get("status", "N/A")
-        
-        # Key-value mapping
+        # Helper to map fields to their respective value colors
+        def make_stat(key, value, color_class="color-primary"):
+            return (key, value, color_class)
+            
         stats = [
-            ("OS", os_val),
-            ("Host", host_val),
-            ("Role", role_val),
-            ("Specialization", spec_val),
-            ("Languages", langs_val),
-            ("Frameworks", frames_val),
-            ("Databases", db_val),
-            ("AI Stack", ai_val),
-            ("Core CS", cs_val),
-            ("Projects", proj_val),
-            ("Achievements", achieve_val),
-            ("LeetCode", leetcode_val),
-            ("Status", status_val)
+            make_stat("OS", personal.get("os", "GitHub")),
+            make_stat("Host", personal.get("host", "N/A")),
+            make_stat("Role", personal.get("role", "N/A")),
+            make_stat("Specialization", personal.get("specialization", "N/A")),
+            make_stat("Languages", " ".join(skills.get("languages", [])), "color-blue"),
+            make_stat("Frameworks", " ".join(skills.get("frameworks", [])), "color-blue"),
+            make_stat("Databases", " ".join(skills.get("databases", [])), "color-blue"),
+            make_stat("AI Stack", " ".join(skills.get("ai_stack", [])), "color-blue"),
+            make_stat("Core CS", " ".join(skills.get("core_cs", [])), "color-blue"),
+            make_stat("Projects", " | ".join(projects)),
+            make_stat("Achievements", achievements[0] if achievements else "N/A"),
+            make_stat("LeetCode", personal.get("leetcode", "N/A")),
+            make_stat("Status", personal.get("status", "N/A"), "color-success")
         ]
         
-        # Setup animation CSS
+        # Setup animation CSS - Optimized and compressed
         content = '''
         <style>
-            @keyframes typing {
+            @keyframes t {
                 from { clip-path: inset(0 100% 0 0); }
                 to { clip-path: inset(0 0 0 0); }
             }
-            @keyframes blink {
+            @keyframes b {
                 0%, 100% { opacity: 1; }
                 50% { opacity: 0; }
             }
-            .ff-row {
+            .r {
                 font-family: 'JetBrains Mono', monospace;
                 font-size: 14px;
-                white-space: pre;
                 clip-path: inset(0 100% 0 0);
-                animation: typing 0.4s steps(50, end) forwards;
+                animation: t 0.15s linear forwards;
             }
-            .cursor {
-                animation: blink 1s infinite;
-            }
+            .c { animation: b 1s infinite; }
         </style>
+        <g xml:space="preserve">
         '''
         
         prompt_y = padding + 14
-        content += f'<text x="{padding}" y="{prompt_y}" class="ff-row" style="animation-delay: 0s;">'
-        content += f'<tspan class="color-success">om@github</tspan><tspan class="color-primary">:</tspan><tspan class="color-blue">~$</tspan><tspan class="color-primary"> fastfetch</tspan>'
+        content += f'<text x="{padding}" y="{prompt_y}" class="r" style="animation-delay: 0s;">'
+        content += '<tspan class="color-success">om@github</tspan><tspan class="color-primary">:</tspan><tspan class="color-blue">~$</tspan><tspan class="color-primary"> fastfetch</tspan>'
         content += '</text>\n'
         
-        current_y = prompt_y + 42 # Add gap after prompt
-        stagger_delay = 0.1
-        start_delay = 0.5 # Wait for prompt to finish typing
+        current_y = prompt_y + 42
+        stagger_delay = 0.08
+        start_delay = 0.2
         
-        # Calculate max key length for proper alignment
-        max_key_len = max(len(k) for k, v in stats)
-        # Pad slightly
-        label_width = max_key_len + 2
+        # Dynamic label width calculation
+        label_width = max(len(k) for k, v, c in stats) + 2
         
-        for i, (key, value) in enumerate(stats):
+        for i, (key, value, color_class) in enumerate(stats):
             delay = start_delay + (i * stagger_delay)
-            # We construct the line as a single text element to animate cleanly
-            content += f'<text x="{padding}" y="{current_y}" class="ff-row" style="animation-delay: {delay}s;" xml:space="preserve">'
-            # Label
-            content += f'<tspan class="color-success">{key.ljust(label_width)}</tspan>'
-            # Value
-            content += f'<tspan class="color-primary">{value}</tspan>'
+            content += f'<text x="{padding}" y="{current_y}" class="r {color_class}" style="animation-delay: {delay}s;">'
+            content += f'<tspan class="color-secondary">{key.ljust(label_width)}</tspan>{value}'
             content += '</text>\n'
-            current_y += 24 # Standard line height
+            current_y += 24
 
         total_rows = len(stats)
-        cursor_delay = start_delay + (total_rows * stagger_delay) + 0.4
+        cursor_delay = start_delay + (total_rows * stagger_delay) + 0.15
         current_y += 12
-        content += f'<text x="{padding}" y="{current_y}" class="ff-row cursor" style="animation-delay: {cursor_delay}s;" xml:space="preserve">'
-        content += f'<tspan class="color-success">om@github</tspan><tspan class="color-primary">:</tspan><tspan class="color-blue">~$</tspan> <tspan class="color-primary">█</tspan>'
-        content += '</text>\n'
+        content += f'<text x="{padding}" y="{current_y}" class="r c" style="animation-delay: {cursor_delay}s;">'
+        content += '<tspan class="color-success">om@github</tspan><tspan class="color-primary">:</tspan><tspan class="color-blue">~$</tspan> <tspan class="color-primary">█</tspan>'
+        content += '</text>\n</g>'
         
-        # Set dimension dynamically based on content height
+        # Responsive GitHub dimension setup handled strictly by inner bounds
         card_height = current_y + padding
         
         return create_svg(820, int(card_height), content)
