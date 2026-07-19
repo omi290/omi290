@@ -4,42 +4,102 @@
     "user": "Om Prakash Barmola",
     "role": "Software Engineer",
     "specialization": "AI-powered Applications",
-    "status": "Building useful software.",
     "leetcode": "250+ Problems"
   },
+
   "education": {
-    "degree": "B.Tech ",
-    "stream": "Computer Science(AI and DS)",
+    "degree": "B.Tech",
+    "stream": "Computer Science (AI & Data Science)",
     "college": "Graphic Era Hill University"
   },
+
   "skills": {
-    "languages": ["C++", "Python", "JavaScript", "SQL"],
-    "frameworks": ["Flask", "React", "Node.js"],
-    "databases": ["MongoDB", "MySQL", "Firebase"],
-    "ai_stack": ["LangChain", "HuggingFace", "OpenAI"],
-    "core_cs": ["DSA", "OOP", "DBMS", "OS", "CN"]
+    "languages": [
+      "C",
+      "C++",
+      "Java",
+      "Python",
+      "JavaScript",
+      "SQL"
+    ],
+
+    "big_data_tools": [
+      "Apache Spark (PySpark)",
+      "Hadoop (HDFS)",
+      "MapReduce",
+      "Git",
+      "Docker",
+      "FastAPI",
+      "Power BI"
+    ],
+
+    "web_development": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Flask"
+    ],
+
+    "databases": [
+      "MongoDB",
+      "Oracle Database",
+      "XAMPP"
+    ],
+
+    "libraries": [
+      "Pandas",
+      "NumPy",
+      "Scikit-learn",
+      "Matplotlib",
+      "Seaborn"
+    ],
+
+    "iot": [
+      "ESP32",
+      "LoRa",
+      "MQTT",
+      "Sensor Integration"
+    ],
+
+    "cloud": [
+      "Google Cloud Platform (GCP)"
+    ],
+
+    "coursework": [
+      "Data Structures & Algorithms",
+      "Operating Systems",
+      "DBMS",
+      "Object-Oriented Programming"
+    ]
   },
+
   "projects": [
     {
       "name": "SafeMine",
       "description": "AI-powered mine safety monitoring system",
-      "technologies": ["Python", "Flask", "OpenCV", "YOLO", "MongoDB"],
-      "github": "github.com/omi290/safemine",
-      "demo": "safemine.vercel.app",
-      "status": "Active Development"
+      "technologies": [
+        "Python",
+        "Flask",
+        "OpenCV",
+        "YOLO",
+        "MongoDB"
+      ]
     },
     {
       "name": "AI Assignment Evaluator",
       "description": "Automated pipeline for evaluating and grading code assignments using LLMs.",
-      "technologies": ["Python", "LangChain", "OpenAI", "React", "Node.js"],
-      "github": "github.com/omi290/ai-evaluator",
-      "demo": "aieval.vercel.app",
-      "status": "Completed"
+      "technologies": [
+        "Python",
+        "LangChain",
+        "OpenAI",
+        "React",
+        "Node.js"
+      ]
     }
   ],
+
   "achievements": [
-    "Graph-e-thon Runner-up"
-  ],
-  "social": {},
-  "contact": {}
+    "Graph-e-thon Runner-up",
+    "250+ LeetCode Problems"
+  ]
 }

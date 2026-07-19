@@ -3,6 +3,9 @@ import json
 from .base_generator import BaseGenerator
 from utils.svg_builder import create_svg
 import config
+from utils.xml_utils import xml_escape_text
+
+
 
 class FastfetchGenerator(BaseGenerator):
     @property
@@ -10,44 +13,55 @@ class FastfetchGenerator(BaseGenerator):
         return "fastfetch"
 
     def fetch_data(self):
-        profile_path = os.path.join(os.path.dirname(__file__), '..', '..', 'profile.json')
+        profile_path = os.path.join(os.path.dirname(__file__), "..", "..", "profile.json")
         try:
-            with open(profile_path, 'r', encoding='utf-8') as f:
+            with open(profile_path, "r", encoding="utf-8") as f:
                 self.profile = json.load(f)
-        except Exception as e:
+        except Exception:
             self.profile = {}
-            print(f"Error loading profile.json: {e}")
 
     def render_svg(self) -> str:
-        padding = config.PADDING if hasattr(config, 'PADDING') else 24
-        
-        # Read from profile
+        padding = config.PADDING if hasattr(config, "PADDING") else 24
+
         personal = self.profile.get("personal", {})
+        education = self.profile.get("education", {})
         skills = self.profile.get("skills", {})
-        projects = self.profile.get("projects", [])
         achievements = self.profile.get("achievements", [])
-        
-        # Helper to map fields to their respective value colors
-        def make_stat(key, value, color_class="color-primary"):
-            return (key, value, color_class)
-            
+
+        def join_list(v):
+            if not v:
+                return ""
+            if isinstance(v, list):
+                return " • ".join([str(x) for x in v if x is not None and str(x).strip() != ""])
+            return str(v).strip()
+
+        def first_or(v, fallback="N/A"):
+            if isinstance(v, list) and v:
+                return str(v[0])
+            return fallback
+
+        # Required Display (remove Host/Status completely)
         stats = [
-            make_stat("OS", personal.get("os", "GitHub")),
-            make_stat("Host", personal.get("host", "N/A")),
-            make_stat("Role", personal.get("role", "N/A")),
-            make_stat("Specialization", personal.get("specialization", "N/A")),
-            make_stat("Languages", " ".join(skills.get("languages", [])), "color-blue"),
-            make_stat("Frameworks", " ".join(skills.get("frameworks", [])), "color-blue"),
-            make_stat("Databases", " ".join(skills.get("databases", [])), "color-blue"),
-            make_stat("AI Stack", " ".join(skills.get("ai_stack", [])), "color-blue"),
-            make_stat("Core CS", " ".join(skills.get("core_cs", [])), "color-blue"),
-            make_stat("Projects", " | ".join(p.get("name", "") if isinstance(p, dict) else p for p in projects)),
-            make_stat("Achievements", achievements[0] if achievements else "N/A"),
-            make_stat("LeetCode", personal.get("leetcode", "N/A")),
-            make_stat("Status", personal.get("status", "N/A"), "color-success")
+            ("OS", personal.get("os", ""), "color-primary"),
+            ("User", personal.get("user", ""), "color-primary"),
+            ("Role", personal.get("role", ""), "color-primary"),
+            ("Specialization", personal.get("specialization", ""), "color-primary"),
+            ("Education", education.get("stream", education.get("degree", "")), "color-secondary"),
+            ("College", education.get("college", ""), "color-secondary"),
+            ("Languages", join_list(skills.get("languages")), "color-blue"),
+            ("AI Stack", join_list(skills.get("ai_stack")), "color-blue"),
+            (
+                "Core Coursework",
+                join_list(skills.get("core_cs") or skills.get("coursework")),
+                "color-blue",
+            ),
+            ("Achievements", first_or(achievements, "N/A"), "color-success"),
         ]
-        
-        # Setup animation CSS - Optimized and compressed
+
+        stats = [s for s in stats if str(s[1]).strip() != ""]
+        if not stats:
+            stats = [("OS", personal.get("os", "GitHub"), "color-primary")]
+
         content = '''
         <style>
             @keyframes t {
@@ -68,23 +82,22 @@ class FastfetchGenerator(BaseGenerator):
         </style>
         <g xml:space="preserve">
         '''
-        
+
         prompt_y = padding + 14
         content += f'<text x="{padding}" y="{prompt_y}" class="r" style="animation-delay: 0s;">'
         content += '<tspan class="color-success">om@github</tspan><tspan class="color-primary">:</tspan><tspan class="color-blue">~$</tspan><tspan class="color-primary"> fastfetch</tspan>'
         content += '</text>\n'
-        
+
         current_y = prompt_y + 42
         stagger_delay = 0.08
         start_delay = 0.2
-        
-        # Dynamic label width calculation
+
         label_width = max(len(k) for k, v, c in stats) + 2
-        
+
         for i, (key, value, color_class) in enumerate(stats):
             delay = start_delay + (i * stagger_delay)
             content += f'<text x="{padding}" y="{current_y}" class="r {color_class}" style="animation-delay: {delay}s;">'
-            content += f'<tspan class="color-secondary">{key.ljust(label_width)}</tspan>{value}'
+            content += f'<tspan class="color-secondary">{xml_escape_text(key.ljust(label_width))}</tspan>{xml_escape_text(value)}'
             content += '</text>\n'
             current_y += 24
 
@@ -94,8 +107,7 @@ class FastfetchGenerator(BaseGenerator):
         content += f'<text x="{padding}" y="{current_y}" class="r c" style="animation-delay: {cursor_delay}s;">'
         content += '<tspan class="color-success">om@github</tspan><tspan class="color-primary">:</tspan><tspan class="color-blue">~$</tspan> <tspan class="color-primary">█</tspan>'
         content += '</text>\n</g>'
-        
-        # Responsive GitHub dimension setup handled strictly by inner bounds
+
         card_height = current_y + padding
-        
         return create_svg(820, int(card_height), content)
+

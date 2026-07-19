@@ -72,21 +72,21 @@
         <g xml:space="preserve">
         <text x="20" y="34" class="cmd" style="animation-delay: 0.0s;"><tspan class="color-success">om@github</tspan><tspan class="color-primary">:</tspan><tspan class="color-blue">~$</tspan><tspan class="color-primary"> cat skills.json</tspan></text>
 <text x="20" y="76" class="cat-title reveal" style="animation-delay: 0.25s;">Languages</text>
-<text x="20" y="94" class="cat-line reveal" style="animation-delay: 0.37s;"><tspan class="color-secondary">C++ • Python • JavaScript • SQL</tspan></text>
-<text x="20" y="128" class="cat-title reveal" style="animation-delay: 0.8s;">Big Data & Tools</text>
-<text x="20" y="146" class="cat-line reveal" style="animation-delay: 0.92s;"><tspan class="color-secondary">Apache Spark (PySpark) • Hadoop (HDFS) • MapReduce</tspan></text>
+<text x="20" y="94" class="cat-line reveal" style="animation-delay: 0.37s;"><tspan class="color-secondary">C • C++ • Java • Python • JavaScript • SQL</tspan></text>
+<text x="20" y="128" class="cat-title reveal" style="animation-delay: 0.8s;">Big Data &amp; Tools</text>
+<text x="20" y="146" class="cat-line reveal" style="animation-delay: 0.92s;"><tspan class="color-secondary">Apache Spark (PySpark) • Hadoop (HDFS) • MapReduce • Git • Docker • FastAPI • Power BI</tspan></text>
 <text x="20" y="180" class="cat-title reveal" style="animation-delay: 1.35s;">Web Development</text>
-<text x="20" y="198" class="cat-line reveal" style="animation-delay: 1.4700000000000002s;"><tspan class="color-secondary">Flask • React • Node.js</tspan></text>
+<text x="20" y="198" class="cat-line reveal" style="animation-delay: 1.4700000000000002s;"><tspan class="color-secondary">HTML • CSS • JavaScript • Flask</tspan></text>
 <text x="20" y="232" class="cat-title reveal" style="animation-delay: 1.9000000000000001s;">Databases</text>
-<text x="20" y="250" class="cat-line reveal" style="animation-delay: 2.02s;"><tspan class="color-secondary">MongoDB • MySQL • Firebase</tspan></text>
+<text x="20" y="250" class="cat-line reveal" style="animation-delay: 2.02s;"><tspan class="color-secondary">MongoDB • Oracle Database • XAMPP</tspan></text>
 <text x="20" y="284" class="cat-title reveal" style="animation-delay: 2.45s;">Libraries</text>
-<text x="20" y="302" class="cat-line reveal" style="animation-delay: 2.5700000000000003s;"><tspan class="color-secondary">LangChain • HuggingFace • OpenAI</tspan></text>
+<text x="20" y="302" class="cat-line reveal" style="animation-delay: 2.5700000000000003s;"><tspan class="color-secondary">Pandas • NumPy • Scikit-learn • Matplotlib • Seaborn</tspan></text>
 <text x="20" y="336" class="cat-title reveal" style="animation-delay: 3.0s;">IoT</text>
-<text x="20" y="354" class="cat-line reveal" style="animation-delay: 3.12s;"><tspan class="color-secondary">N/A</tspan></text>
+<text x="20" y="354" class="cat-line reveal" style="animation-delay: 3.12s;"><tspan class="color-secondary">ESP32 • LoRa • MQTT • Sensor Integration</tspan></text>
 <text x="20" y="388" class="cat-title reveal" style="animation-delay: 3.55s;">Cloud</text>
-<text x="20" y="406" class="cat-line reveal" style="animation-delay: 3.67s;"><tspan class="color-secondary">N/A</tspan></text>
+<text x="20" y="406" class="cat-line reveal" style="animation-delay: 3.67s;"><tspan class="color-secondary">Google Cloud Platform (GCP)</tspan></text>
 <text x="20" y="440" class="cat-title reveal" style="animation-delay: 4.1s;">Coursework</text>
-<text x="20" y="458" class="cat-line reveal" style="animation-delay: 4.22s;"><tspan class="color-secondary">DSA • OOP • DBMS • OS • CN</tspan></text>
+<text x="20" y="458" class="cat-line reveal" style="animation-delay: 4.22s;"><tspan class="color-secondary">Data Structures &amp; Algorithms • Operating Systems • DBMS • Object-Oriented Programming</tspan></text>
 <text x="20" y="498" class="cmd reveal" style="animation-delay: 4.749999999999999s;"><tspan class="color-success">om@github</tspan><tspan class="color-primary">:</tspan><tspan class="color-blue">~$</tspan> <tspan class="color-primary cursor">█</tspan></text>
 </g>
     </g>
