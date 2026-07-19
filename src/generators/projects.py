@@ -23,7 +23,6 @@ class ProjectsGenerator(BaseGenerator):
         
         projects = self.profile.get("projects", [])
         if not projects:
-            # Fallback
             projects = [{
                 "name": "No Projects Found",
                 "description": "Please add projects to profile.json",
@@ -33,29 +32,25 @@ class ProjectsGenerator(BaseGenerator):
                 "status": "Unknown"
             }]
 
+        # CSS tailored for GitHub compat: 
+        # - Default state is visible (opacity 1)
+        # - Keyframe animates from opacity 0 to 1
+        # - 'backwards' fill-mode hides it during the delay period.
+        # If GitHub strips the animation, it gracefully falls back to opacity: 1 default.
         content = '''
         <style>
-            @keyframes t {
-                from { clip-path: inset(0 100% 0 0); }
-                to { clip-path: inset(0 0 0 0); }
+            @keyframes fade {
+                0% { opacity: 0; }
+                100% { opacity: 1; }
             }
-            @keyframes f {
-                from { opacity: 0; transform: translateY(5px); }
-                to { opacity: 1; transform: translateY(0); }
-            }
-            .cmd {
+            .cmd, .r {
                 font-family: 'JetBrains Mono', monospace;
                 font-size: 14px;
-                clip-path: inset(0 100% 0 0);
-                animation: t 0.3s linear forwards;
+                animation: fade 0.3s backwards;
             }
-            .r {
-                font-family: 'JetBrains Mono', monospace;
-                font-size: 14px;
-                opacity: 0;
-                animation: f 0.2s ease-out forwards;
-            }
-            .name { font-weight: bold; }
+            .name { font-weight: bold; font-size: 15px; }
+            a { text-decoration: none; cursor: pointer; }
+            a:hover { text-decoration: underline; }
         </style>
         <g xml:space="preserve">
         '''
@@ -66,68 +61,69 @@ class ProjectsGenerator(BaseGenerator):
         content += '</text>\n'
         
         current_y = prompt_y + 40
-        delay = 0.4  # Start after command finishes
-        stagger = 0.08 # Very fast line by line to keep under 3 seconds
+        delay = 0.4
+        stagger = 0.1
         
         for idx, p in enumerate(projects):
-            # 1. Separator (optional, or just top padding)
             if idx > 0:
-                content += f'<text x="{padding}" y="{current_y}" class="r color-secondary" style="animation-delay: {delay}s;">{"-" * 65}</text>\n'
+                content += f'<text x="{padding}" y="{current_y}" class="r color-secondary" style="animation-delay: {delay}s;">{"-" * 60}</text>\n'
                 current_y += 24
                 delay += stagger
                 
-            # 2. Name
+            # 1. Name
             name = p.get("name", "Unnamed")
             content += f'<text x="{padding}" y="{current_y}" class="r name color-primary" style="animation-delay: {delay}s;">{name}</text>\n'
             current_y += 20
             delay += stagger
             
-            # 3. Description
+            # 2. Description
             desc = p.get("description", "")
-            content += f'<text x="{padding}" y="{current_y}" class="r color-secondary" style="animation-delay: {delay}s;">{desc}</text>\n'
-            current_y += 26
-            delay += stagger
+            if desc:
+                content += f'<text x="{padding}" y="{current_y}" class="r color-secondary" style="animation-delay: {delay}s;">{desc}</text>\n'
+                current_y += 24
+                delay += stagger
             
-            # 4. Tech Stack
+            # 3. Stack
             tech = p.get("technologies", [])
-            tech_str = " • ".join(tech)
-            content += f'<text x="{padding}" y="{current_y}" class="r" style="animation-delay: {delay}s;">'
-            content += f'<tspan class="color-secondary">Stack:  </tspan><tspan class="color-blue">{tech_str}</tspan>'
-            content += '</text>\n'
-            current_y += 20
-            delay += stagger
+            if tech:
+                tech_str = " • ".join(tech)
+                content += f'<text x="{padding}" y="{current_y}" class="r" style="animation-delay: {delay}s;">'
+                content += f'<tspan class="color-secondary">Stack : </tspan><tspan class="color-blue">{tech_str}</tspan>'
+                content += '</text>\n'
+                current_y += 20
+                delay += stagger
             
-            # 5. GitHub
+            # 4. Links
             gh = p.get("github", "")
-            if gh:
-                content += f'<text x="{padding}" y="{current_y}" class="r" style="animation-delay: {delay}s;">'
-                content += f'<tspan class="color-secondary">GitHub: </tspan><tspan class="color-primary">{gh}</tspan>'
-                content += '</text>\n'
-                current_y += 20
-                delay += stagger
-                
-            # 6. Demo
             demo = p.get("demo", "")
-            if demo:
+            if gh or demo:
                 content += f'<text x="{padding}" y="{current_y}" class="r" style="animation-delay: {delay}s;">'
-                content += f'<tspan class="color-secondary">Demo:   </tspan><tspan class="color-primary">{demo}</tspan>'
+                content += '<tspan class="color-secondary">Links : </tspan>'
+                links_arr = []
+                if gh:
+                    href = f"https://{gh}" if not gh.startswith("http") else gh
+                    links_arr.append(f'<a href="{href}" target="_blank"><tspan class="color-primary">Repository ↗</tspan></a>')
+                if demo:
+                    href = f"https://{demo}" if not demo.startswith("http") else demo
+                    links_arr.append(f'<a href="{href}" target="_blank"><tspan class="color-primary">Live ↗</tspan></a>')
+                
+                content += ' | '.join(links_arr)
                 content += '</text>\n'
                 current_y += 20
                 delay += stagger
                 
-            # 7. Status
+            # 5. Status
             status = p.get("status", "")
             if status:
                 content += f'<text x="{padding}" y="{current_y}" class="r" style="animation-delay: {delay}s;">'
-                content += f'<tspan class="color-secondary">Status: </tspan><tspan class="color-success">{status}</tspan>'
+                content += f'<tspan class="color-secondary">Status: </tspan><tspan class="color-success">● {status}</tspan>'
                 content += '</text>\n'
                 current_y += 20
                 delay += stagger
                 
-            current_y += 16 # Extra gap before next project
+            current_y += 12 # Gap before next project
 
         content += '</g>'
-        
         card_height = current_y + padding
         
         return create_svg(820, int(card_height), content)
